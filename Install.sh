@@ -542,7 +542,10 @@ user_input2=$(\
 			 --inputbox "Ingresa el nuevo Titulo GUI:" 8 40 \
   3>&1 1>&2 2>&3 3>&- \
 )
-sed -i 's+<p class="description"></p>+<p class="description">'"$user_input2"'</p>+g' /var/www/html/themes/alo/_common/login.tpl
+sed -i 's+<p class="description"></p>+<p class="description">IPPBXALO '"$user_input2"'</p>+g' /var/www/html/themes/alo/_common/login.tpl
+sed -i "s|<title>Issabel - {\$PAGE_NAME}</title>|<title>IPPBXALO '"$user_input2"'</title>|g" /var/www/html/themes/alo/_common/login.tpl
+sed -i "s|<title>Issabel</title>|<title>IPPBXALO '"$user_input2"'</title>|g" /var/www/html/themes/alo/_common/index.tpl
+
 
 #==================== reducir el margin del logo
 sed -i 's|<div class="login-header login-caret">|<div class="login-header login-caret" style="padding:0px">|g' /var/www/html/themes/alo/_common/login.tpl
