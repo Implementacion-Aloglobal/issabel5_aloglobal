@@ -484,14 +484,6 @@ function bye()
 
 function aloglobal() {
 
-user_input2=$(\
-  dialog  --backtitle "$BACKTITLE" --title "Ingresa el nuevo Titulo GUI (EJEMPlO: IPPBX CLOUD COMFENALCO-CANAS)" --no-tags \
-			 --inputbox "Ingresa el nuevo Titulo GUI:" 8 40 \
-  3>&1 1>&2 2>&3 3>&- \
-)
-sed -i 's+<p class="description"></p>+<p class="description">'"$user_input2"'</p>+g' /var/www/html/themes/tenant/_common/login.tpl
-
-
 #instalacion htop
 
 yum install epel-repository
@@ -544,12 +536,21 @@ sqlite3 /var/www/db/acl.db "UPDATE acl_user SET name = 'technicalsupport' WHERE 
 #===================== cambiamos idioma a español
 sqlite3 /var/www/db/settings.db "update settings set value = 'es' where value = 'en'" 
 
+#===================== Titulo GUI WEB ISSABEL
+user_input2=$(\
+  dialog  --backtitle "$BACKTITLE" --title "Ingresa el nuevo Titulo GUI (EJEMPlO: IPPBX CLOUD COMFENALCO-CANAS)" --no-tags \
+			 --inputbox "Ingresa el nuevo Titulo GUI:" 8 40 \
+  3>&1 1>&2 2>&3 3>&- \
+)
+sed -i 's+<p class="description"></p>+<p class="description">'"$user_input2"'</p>+g' /var/www/html/themes/alo/_common/login.tpl
+
+
 #=====================  Instalacion fecha actual
 rm -f /etc/localtime && ln -s /usr/share/zoneinfo/America/Bogota /etc/localtime  
 
 dialog --title "AVISO" \
        --backtitle "$BACKTITLE" \
-       --msgbox "RECUERDE QUE ACCEDE POR SSH CON PUERTO 57690" 8 50
+       --msgbox "RECUERDE QUE ACCEDE POR SSH CON PUERTO 57690 | USER ISSABEL technicalsupport" 8 50
 
 }
 
