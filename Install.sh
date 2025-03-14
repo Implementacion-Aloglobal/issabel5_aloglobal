@@ -544,6 +544,8 @@ user_input2=$(\
 )
 sed -i 's+<p class="description"></p>+<p class="description">'"$user_input2"'</p>+g' /var/www/html/themes/alo/_common/login.tpl
 
+#==================== reducir el margin del logo
+sed -i 's|<div class="login-header login-caret">|<div class="login-header login-caret" style="padding:0px">|g' /var/www/html/themes/alo/_common/login.tpl
 
 #=====================  Instalacion fecha actual
 rm -f /etc/localtime && ln -s /usr/share/zoneinfo/America/Bogota /etc/localtime  
