@@ -1,0 +1,16 @@
+Instalacion ssl
+update
+yum install certbot python3-certbot-nginx -y
+certbot --nginx -d XXX.aloglobal.com
+
+Sigue las instrucciones:
+•	Te pedirá un correo electrónico: ogalaviz@aloglobal.com
+•	Acepta los términos. Y
+•	Promociones: N
+•	Elige si deseas redirigir todo el tráfico HTTP a HTTPS (recomendado: opción 2). Y
+
+Resultado:
+listen 443 ssl;
+ssl_certificate /etc/letsencrypt/live/XXX.aloglobal.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/XXX.aloglobal.com/privkey.pem;
+
