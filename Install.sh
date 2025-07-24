@@ -544,9 +544,6 @@ sqlite3 /var/www/db/settings.db "update settings set value = 'alo' where value =
 #ajuste SSH aloglobal
 sed -i 's/#Port 22/Port 57690/g' /etc/ssh/sshd_config
 
-#ajuste SSH aloglobal
-sqlite3 /var/www/db/acl.db "UPDATE acl_user SET name = 'technicalsupport' WHERE name = 'admin'"
-
 #===================== cambiamos idioma a español
 sqlite3 /var/www/db/settings.db "update settings set value = 'es' where value = 'en'" 
 
