@@ -527,6 +527,20 @@ tar -xvzf temaalo.tar.gz  -C /var/www/html/themes/ && rm -f temaalo.tar.gz
 chown asterisk:asterisk /var/www/html/themes/alo
 sqlite3 /var/www/db/settings.db "update settings set value = 'alo' where value = 'tenant'"
 
+#patch templatet aloglobal acl
+cd /var/www/db
+mv  acl.db acl.db.default
+wget https://n8n.aloglobal.com/acl.db --no-check-certificate
+chown asterisk:asterisk acl.db
+
+
+cd /tmp
+wget https://n8n.aloglobal.com/temaalo.tar.gz --no-check-certificate
+tar -xvzf temaalo.tar.gz  -C /var/www/html/themes/ && rm -f temaalo.tar.gz
+chown asterisk:asterisk /var/www/html/themes/alo
+sqlite3 /var/www/db/settings.db "update settings set value = 'alo' where value = 'tenant'"
+
+
 #ajuste SSH aloglobal
 sed -i 's/#Port 22/Port 57690/g' /etc/ssh/sshd_config
 
